@@ -31,7 +31,7 @@ Quelle und aktuelle Oberfläche: [Claude: Custom Connectors](https://support.cla
 1. Unter [Releases](https://github.com/heffdev/feuerwehr-pruefung-skill/releases/latest) das passende ZIP herunterladen. Die allgemeine GitHub-Funktion „Download ZIP“ liefert den Quellcode und ist nicht das Importpaket.
 2. Falls nötig, unter **Settings → Capabilities** die Dateierstellung/Codeausführung aktivieren (je nach Oberfläche **Create and edit files**). Organisationsrichtlinien bleiben maßgeblich.
 3. Neue **Plugins**-Oberfläche mit **Add → Upload plugin**: **feuerwehr-pruefung-claude-plugin.zip** hochladen. Dieses Paket enthält ein minimales Plugin-Manifest und genau denselben Skill. Es richtet keinen zusätzlichen MCP-Connector ein und enthält keine Skripte oder Hooks.
-   Ältere Oberfläche mit **Customize → Skills → + → Create skill → Upload a skill**: **feuerwehr-pruefung-skill.zip** hochladen. Die beiden Pakete sind Alternativen; nicht beide installieren. Falls die konkrete Oberfläche den Import ablehnt, den bereinigten Fehler melden; der Import ist vor dem realen Test noch nicht bestätigt.
+   Ältere Oberfläche mit **Customize → Skills → + → Create skill → Upload a skill**: **feuerwehr-pruefung-skill.zip** hochladen. Die beiden Pakete sind Alternativen; nicht beide installieren. Falls die konkrete Oberfläche den Import ablehnt, den bereinigten Fehler melden. Der unten dokumentierte Operator-Test bestätigt den Plugin-Import nur für die tatsächlich verwendete Oberfläche.
 4. Den Skill zusammen mit dem zuvor eingerichteten MCP-Connector verwenden.
 
 Offizielle Anleitungen: [neue Plugins-Oberfläche](https://support.claude.com/en/articles/17740565-manage-plugins-skills-and-connectors-from-one-plugins-page), [Skills verwenden](https://support.claude.com/en/articles/12512180-use-skills-in-claude), [eigene Skills und ZIP-Struktur](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills), [Plugin-Archivformat](https://platform.claude.com/docs/en/manage-claude/plugins-api#upload-requirements). Das letzte Dokument beschreibt das Format der Plugin-Archive, nicht einen API-Zugang für individuelle Free-Konten.
@@ -70,6 +70,12 @@ Der Agent darf nach ausdrücklichem Auftrag einen Entwurf vorbereiten und tatsä
 Die serverseitige Freigabe ist zehn Minuten gültig, einmalig und an Person, Station, Entwurf, Checksumme und vollständigen Dateninhalt gebunden. Änderungen erfordern eine erneute Prüfung und Freigabe. Fehlende Pläne, Qualifikationen oder Rechte sind in der Anwendung durch berechtigte Personen zu klären.
 
 Keine Audiodateien oder Gesprächstranskripte an den MCP-Dienst übertragen. In den Prüfnachweisen nur die erforderlichen tatsächlichen Angaben speichern. Die Datenschutz- und Aufbewahrungseinstellungen des gewählten KI-Anbieters sind separat zu prüfen; dieser Skill konfiguriert sie nicht.
+
+## Beobachteter Client-Test
+
+Am 22. November 2026 bestätigte der Betreiber einen Claude-Free-Account, die OAuth-Verbindung zu Preprod, den Import des v0.1.0-Plugin-ZIPs sowie erfolgreiche Aufrufe von `pruefung_whoami` und `pruefung_get_checklist`. Beim Wechsel auf das vorbereitete Testkonto meldete whoami die erwartete Teststation und beide Scopes.
+
+Das ist ein vom Betreiber berichteter Test, keine unabhängige Aufzeichnung des HTTP-Verkehrs. Der komplette Fünf-Lesewerkzeuge-Test und eine persönlich freigegebene Prüfung sind damit nicht bestätigt. Der beaufsichtigte Schreibtest wurde auf später verschoben; Schreibfunktionen bleiben bis zum abgestimmten Testfenster deaktiviert. Für andere Tarife oder Oberflächen wird daraus keine Verfügbarkeit abgeleitet. Die frühere Anwendungssitzung mit abgelaufenem Trial blieb trotz OAuth-Schreibrecht korrekt schreibgesperrt; es wurde kein Trial verlängert.
 
 ## Paket lokal bauen
 
