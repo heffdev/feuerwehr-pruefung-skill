@@ -1,0 +1,7 @@
+{
+  "name": "feuerwehr-pruefung",
+  "displayName": "Geräteprüfung Feuerwehr",
+  "version": "0.1.0",
+  "description": "Deutschsprachiger Prüfablauf mit dem bereits verbundenen Feuerwehr-Prüf-App MCP-Connector und persönlicher Freigabe in der Anwendung.",
+  "license": "MIT"
+}
